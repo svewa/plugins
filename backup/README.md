@@ -19,7 +19,7 @@ pip3 install --user -r requirements.txt
 ## Setup
 
 Before the backup plugin can be used it has to be initialized once. The following
-command will create /mnt/external/location/file.sql as backup file and reference it 
+command will create /mnt/external/location/file.bkp as backup file and reference it 
 in `backup.lock` in the lightning directory that stores the internal state, and 
 which makes sure no two instances are using the same backup.
 
@@ -35,6 +35,9 @@ Notes:
    otherwise any failure of the disk may result in both the original
    as well as the backup being corrupted.
  - Currently only the `file:///` URL scheme is supported.
+ - The backup location needs sufficient space, and a file system supporting 
+   large files, as the whole backup will be in a single ever growing file.
+   With 16 channels the monthly spacre requirement is > 6GB
 
 ## IMPORTANT note about hsm_secret
 
